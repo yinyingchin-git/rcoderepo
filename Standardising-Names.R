@@ -132,7 +132,7 @@ distinct<-df%>%
   distinct(Trainer)
 
 
-#trim partnerships into senior trainer name only
+#trim partnerships into senior trainer name only - use this to create a new collumn which you will use to match from here on.
 trim_before_and <- function(x) {
   sapply(x, function(str) {
     # Split the string at the word "and" (surrounded by spaces)
@@ -141,6 +141,7 @@ trim_before_and <- function(x) {
     str_trim(parts[1])
   })
 }
+
 
 data<-dt%>%
   group_by(HorseID)%>%
