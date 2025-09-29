@@ -55,6 +55,9 @@ rm(remDR)
 gc()
 
 #Set the browser and start server
+# There may be some settings required to set the latest version of browser
+# Visit website below for up to date instructions 
+# https://stackoverflow.com/questions/78405620/how-to-install-and-specify-correct-driver-version-for-rselenium-for-chrome-v115
 remDR<-rsDriver(port=4672L,browser="chrome",chromever = "83.0.4103.39") #set browser 
 rD<-remDR[["client"]]  #startserver
 # #Navigate to Racing website
