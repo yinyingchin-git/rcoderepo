@@ -1,0 +1,18 @@
+Web-scraping steps:
+Step 1: Get the URL for breeding record page for each mare.
+-	A custom web-scraping function was written to navigate to loveracing.nz/stud-book/search.aspx and perform a form query using mare name. The function then reads html of the search result into R. The URL that navigates to breeding record page is identified and extracted. 
+-	This function gets the URL of the first 3 search results because there are mares with similar/ identical names. The mare of interest may not return as the first result on the list.
+-	If the search returns an error, an empty data frame will be returned. 
+-	This process is iterated on all mares by nesting the web-scraping function within the do() function. This allows the web-scraping function will work through the list of mare names that is parsed through the nested function.
+Step 2: Identify the correct URL 
+-	Mares can be identified precisely by name and year of birth. 
+-	Mare year of birth and name was extracted from the URL and matched to name and YOB recorded in the original dataset.
+-	Only URLs that contain matching YOB and name were retained others dropped.
+Step 3: Identify mares missed/ skipped in the search process due to potential issues such as connection timed out or server not responding.
+-	Mare names returned from the web-scraping search were cross-referenced with the mare names in the original dataset. 
+-	A list of mares that were missed from the search is pulled and a search is repeated on these mares. 
+Step 4: Scraping the breeding table. 
+-	Another web-scraping function was written. This function fetches the webpage with the URL provided and reads the HTML of the page into R. 
+-	The breeding record is embedded in the HTML. The location of the breeding record in the HTML was identified using HTML nodes and extracted. The information is organised into a table. 
+-	This process is iterated over the list of URL obtained in step 1 and organised into a table by mare names. 
+Step 5: Identify mares missed in step 4. 
